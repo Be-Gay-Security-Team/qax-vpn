@@ -2,8 +2,7 @@
 奇安信VPN存在任意账号密码修改漏洞以及未授权管理用户遍历漏洞
 
 # ikun版
-![图片](https://github.com/fork778/qax-vpn/assets/109639355/ce4259ff-91e1-4282-8e2a-129d217a63d0)
-
+<img width="200" alt="cxk" src="https://github.com/fork778/qax-vpn/assets/109639355/ce4259ff-91e1-4282-8e2a-129d217a63d0">
 
 ## USE
 `fofa:app=""`
